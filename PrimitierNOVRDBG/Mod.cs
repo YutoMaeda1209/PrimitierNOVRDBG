@@ -60,7 +60,7 @@ namespace PrimitierNOVRDBG
             {
                 leftHandCtrl = GameObject.Find("LeftHand Controller");
                 leftHand = GameObject.Find("LeftHand").GetComponent<Grabber>();
-                
+
                 var hand = leftHand.GetComponent<Hand>();
                 hand.maximumForce = float.PositiveInfinity;
                 hand.maximumTorque = float.PositiveInfinity;
@@ -145,7 +145,7 @@ namespace PrimitierNOVRDBG
 
                 leftHandMove += new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), Input.mouseScrollDelta.y) * 0.05f;
             }
-            if (Input.GetKeyDown(KeyCode.Keypad7))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 leftHandMove = new Vector3(-0.1f, -0.2f, 0.15f);
                 leftHandRot = new Vector3(270f, 0f, 0f);
@@ -164,7 +164,7 @@ namespace PrimitierNOVRDBG
 
                 rightHandMove += new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), Input.mouseScrollDelta.y) * 0.05f;
             }
-            if (Input.GetKeyDown(KeyCode.Keypad8))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 rightHandMove = new Vector3(0.1f, -0.2f, 0.15f);
                 rightHandRot = new Vector3(270f, 0f, 0f);
@@ -196,23 +196,23 @@ namespace PrimitierNOVRDBG
         public static bool god = false;
         bool ultraGrab = false;
 
-        public override void OnGUI()
-        {
-            god = GUI.Toggle(new Rect(10f, 100f, 300f, 20f), god, "Godmode");
-            ultraGrab = GUI.Toggle(new Rect(10f, 120f, 300f, 20f), ultraGrab, "ULTRA Grab");
-            if (ultraGrab)
-            {
-                if (leftHand.joint != null)
-                    leftHand.joint.connectedMassScale = 1000000f;
-                if (rightHand.joint != null)
-                    rightHand.joint.connectedMassScale = 1000000f;
+        //public override void OnGUI()
+        //{
+        //    god = GUI.Toggle(new Rect(10f, 100f, 300f, 20f), god, "Godmode");
+        //    ultraGrab = GUI.Toggle(new Rect(10f, 120f, 300f, 20f), ultraGrab, "ULTRA Grab");
+        //    if (ultraGrab)
+        //    {
+        //        if (leftHand.joint != null)
+        //            leftHand.joint.connectedMassScale = 1000000f;
+        //        if (rightHand.joint != null)
+        //            rightHand.joint.connectedMassScale = 1000000f;
 
-                Grabber.releaseDistance = float.PositiveInfinity;
-            }
-            else
-            {
-                Grabber.releaseDistance = 1.8f;
-            }
-        }
+        //        Grabber.releaseDistance = float.PositiveInfinity;
+        //    }
+        //    else
+        //    {
+        //        Grabber.releaseDistance = 1.8f;
+        //    }
+        //}
     }
 }
